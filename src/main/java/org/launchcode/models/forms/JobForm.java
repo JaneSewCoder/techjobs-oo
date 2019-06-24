@@ -5,6 +5,7 @@ import org.launchcode.models.Employer;
 import org.launchcode.models.Location;
 import org.launchcode.models.PositionType;
 import org.launchcode.models.data.JobData;
+import org.springframework.validation.Errors;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 public class JobForm {
 
     @NotNull
-    @Size(min=1, message = "Name may not be empty")
+    @Size(min = 1, message = "Name may not be empty")
     private String name;
 
     @NotNull
@@ -27,6 +28,17 @@ public class JobForm {
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
+
+
+    @NotNull
+    private int locationId;
+
+    @NotNull
+    private int coreCompentencyId;
+
+    @NotNull
+    private int positionTypeId;
+
 
     private ArrayList<Employer> employers;
     private ArrayList<Location> locations;
@@ -42,6 +54,9 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
 
     }
 
@@ -69,12 +84,31 @@ public class JobForm {
         this.employers = employers;
     }
 
+    //-------/
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
     public ArrayList<Location> getLocations() {
         return locations;
     }
 
     public void setLocations(ArrayList<Location> locations) {
         this.locations = locations;
+    }
+
+    //-------/
+    public int getCoreCompentencyId() {
+        return coreCompentencyId;
+    }
+
+    public void setCoreCompentencyId(int coreCompentencyId) {
+        this.coreCompentencyId = coreCompentencyId;
     }
 
     public ArrayList<CoreCompetency> getCoreCompetencies() {
@@ -85,6 +119,16 @@ public class JobForm {
         this.coreCompetencies = coreCompetencies;
     }
 
+    //-------/
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setpositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
+    }
+
     public ArrayList<PositionType> getPositionTypes() {
         return positionTypes;
     }
@@ -92,4 +136,5 @@ public class JobForm {
     public void setPositionTypes(ArrayList<PositionType> positionTypes) {
         this.positionTypes = positionTypes;
     }
+
 }

@@ -1,6 +1,6 @@
 package org.launchcode.models.data;
 
-import org.launchcode.models.Job;
+import org.launchcode.models.CoreCompetency;
 import org.launchcode.models.JobField;
 
 import java.util.ArrayList;
@@ -38,4 +38,7 @@ public class JobFieldData<T extends JobField> {
         return null;
     }
 
+    public CoreCompetency findById(ArrayList<T> coreCompetencies) {
+        return null;
+    }
 }
